@@ -65,5 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 body.resume h1{margin:0 0 .5rem}
 body.resume section{margin:1rem 0}
-body.resume ul{margin:.5rem 0 0 1.25em}
-body.resume li{margin:.35em 0}
+body.resume ul{margin:0.5rem 0 0 1.25em}
+body.resume li{margin:0.35em 0}
+body.resume .job{display:grid;grid-template-columns:1fr auto;gap:.25rem;align-items:baseline}
+body.resume .job .where,body.resume .job .dates{opacity:.8}
