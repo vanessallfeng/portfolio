@@ -1,0 +1,65 @@
+body {
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: 0 1rem
+}
+img {max-width: 100%;height: auto}
+
+nav {display: flex}
+nav a {flex: 1}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em
+}
+
+nav {
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid oklch(80% 3% 200)
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em
+}
+
+:root {--color-accent: oklch(29.929% 0.15269 270.805)}
+html {accent-color: var(--color-accent)}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h)
+}
+
+input, textarea, button {font: inherit}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em
+}
+label {display: contents}
+button {grid-column: 1/-1}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3
+}
+.projects h2 {margin: 0}
+
+h1 {font-size: 400%}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance
+}
