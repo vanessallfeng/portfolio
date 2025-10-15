@@ -1,12 +1,19 @@
 html { color-scheme: light dark; }
 
+:root {
+  --color-accent: oklch(70% 0.12 320);
+}
+
+html {accent-color: var(--color-accent); }
+
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin: 0 auto;
   padding: 0 1rem;
 }
-img { max-width: 100%; height: auto; }
+
+img {max-width: 100%; height: auto; }
 
 nav { display: flex; }
 nav a { flex: 1; }
@@ -30,11 +37,7 @@ nav a.current {
   font-weight: 600;
 }
 
-:root { --color-accent: oklch(70% 0.12 320); }
-html  { accent-color: var(--color-accent); }
-
 nav a:hover {
-  /* softer hover that blends with background */
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-bottom-color: var(--border-color);
 }
@@ -46,6 +49,7 @@ form {
   grid-template-columns: auto 1fr;
   gap: 1em;
 }
+
 label { display: contents; }
 button { grid-column: 1 / -1; }
 
@@ -60,22 +64,15 @@ button { grid-column: 1 / -1; }
   grid-template-rows: subgrid;
   grid-row: span 3;
 }
-.projects h2 {margin: 0; }
 
-h1 {font-size: 400%; }
+.projects h2 { margin: 0; }
+
+h1 { font-size: 400%; }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
-
-body.resume h1 { margin: 0 0 .5rem; }
-body.resume section { margin: 1rem 0; }
-body.resume ul { margin: 0.5rem 0 0 1.25em; }
-body.resume li { margin: 0.35em 0; }
-body.resume .job { display: grid; grid-template-columns: 1fr auto; gap: .25rem; align-items: baseline; }
-body.resume .job .where,
-body.resume .job .dates { opacity: .8; }
 
 .color-scheme {
   position: absolute;
@@ -87,4 +84,44 @@ body.resume .job .dates { opacity: .8; }
   font-size: .8rem;
   opacity: .9;
   z-index: 1000;
+}
+
+body.resume {
+  --col-gap: 1rem;
+  --row-gap: .25rem;
+}
+
+body.resume h1 { margin: 0 0 .5rem; }
+body.resume h2 { margin: 1rem 0 .4rem; }
+body.resume section { margin: 1rem 0; }
+body.resume p { margin: .25rem 0; }
+body.resume ul { margin: 0.5rem 0 0 1.25em; }
+body.resume li { margin: 0.35em 0; }
+
+body.resume .job {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "role role dates"
+    "where bullets bullets";
+  column-gap: var(--col-gap);
+  row-gap: var(--row-gap);
+  align-items: start;
+  margin: .75rem 0 1rem;
+}
+
+body.resume .job .role { grid-area: role;  margin: 0;}
+body.resume .job .dates { grid-area: dates; text-align: right; opacity: .8;}
+body.resume .job .where { grid-area: where; opacity: .8;}
+
+body.resume .job ul {
+  grid-area: bullets;
+  margin: .25rem 0 .75rem 1.1em;
+  padding: 0;
+}
+
+body.resume .job li { margin: .25rem 0; }
+
+@media (max-width: 640px) {
+  body.resume h1 { font-size: clamp(2rem, 7vw, 3rem); }
 }
