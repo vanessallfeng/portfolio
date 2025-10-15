@@ -2,73 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanessa Feng's Resume</title>
-  <link rel="stylesheet" href="../style.css?v=3" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanessa Feng — Resume</title>
+  <link rel="stylesheet" href="../style.css?v=4" />
 </head>
-<body>
+<body class="resume">
+  <!-- nav & theme switcher come from global.js -->
 
   <h1>Vanessa Feng</h1>
-  <p>Email: vanessalfeng@gmail.com | Phone: 626-267-9978 |
-     <a href="https://www.linkedin.com/in/vanessalfeng/" target="_blank">LinkedIn</a>
+  <p>
+    Email: <a href="mailto:vanessalfeng@gmail.com">vanessalfeng@gmail.com</a> |
+    Phone: 626-267-9978 |
+    <a href="https://www.linkedin.com/in/vanessalfeng/" target="_blank" rel="noopener">LinkedIn</a> |
+    <a href="https://github.com/vanessallfeng" target="_blank" rel="noopener">GitHub</a>
   </p>
 
   <h2>EDUCATION</h2>
-  <p>University of California, San Diego — San Diego, CA</p>
-  <p>B.S. Data Science & B.A. Economics (GPA: 3.75/4.0), Expected Graduation:
-     <time datetime="2027-06">Jun 2027</time>
-  </p>
-  <p>Coursework: Econometrics, Financial Accounting, Financial Statement Modeling, Data Modeling, Machine Learning & Application, Data Management</p>
+  <section>
+    <p><strong>University of California, San Diego</strong> — San Diego, CA</p>
+    <p>
+      B.S. Data Science &amp; B.A. Economics (GPA: 3.75/4.0) — Expected Graduation:
+      <time datetime="2027-06">June 2027</time>
+    </p>
+    <p>
+      Relevant coursework: Econometrics, Financial Accounting, Financial Statement Modeling,
+      Data Modeling, Machine Learning &amp; Applications, Data Management.
+    </p>
+  </section>
 
   <h2>PROFESSIONAL EXPERIENCE</h2>
-  <div class="job">
+
+  <section class="job">
     <h3 class="role">Wealth Management Intern — Morgan Stanley</h3>
     <div class="dates">Aug 2025 – Present</div>
     <div class="where">New York, NY</div>
     <ul>
-      <li>Screened and modeled 5 US large/mid-cap stocks … through <time datetime="2028">2028</time> …</li>
-      <li>Dissected 5 private market funds … ($200M+ impact)</li>
+      <li>Screened and modeled five U.S. large/mid-cap equities aligned to key macro themes; analyzed three-year revenue and EPS trends and built Excel-based projections through <time datetime="2028">2028</time>.</li>
+      <li>Produced intrinsic value estimates indicating 20–23% upside, used by the team to inform client portfolio positioning.</li>
+      <li>Researched five private-market funds (K-INFRA, BREIT, Apollo AAA, O-CREDIT, North Haven PAF) and developed risk profiles covering macro fit, liquidity tolerance, and sensitivity to market changes.</li>
+      <li>Supported allocation recommendations across 50+ client portfolios with aggregate impact exceeding $200M AUM.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="job">
+  <section class="job">
     <h3 class="role">Credit Risk Intern — Lima One Capital</h3>
     <div class="dates">May 2025 – Aug 2025</div>
     <div class="where">Greenville, SC</div>
     <ul>
-      <li>Developed and implemented a loan-filter system …</li>
-      <li>Performed sensitivity analysis on 8 PD thresholds …</li>
-      <li>Built Datarails dashboards …</li>
-      <li>Restructured internal Credit Approval Memo …</li>
+      <li>Built a loan-filter pipeline that routed Probability-of-Default (PD) model outputs to the watchlist, reducing false positives by 30–35% and saving ~10 hours per month of manual review.</li>
+      <li>Ran threshold sensitivity on eight PD cutoffs; tracked recall, precision, accuracy, and ROC-AUC; selected an operating point achieving ≥0.90 recall while maintaining practical precision for underwriting review.</li>
+      <li>Created Datarails dashboards segmenting ~300 PD-flagged loans monthly by product, geography, vintage, and sponsor profile to speed triage and escalation.</li>
+      <li>Redesigned the Credit Approval Memo to quantify risk assessments, cutting loan approval meeting time by ~50%.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="job">
+  <section class="job">
     <h3 class="role">VC Analyst Intern — Rappo</h3>
     <div class="dates">Jun 2024 – Sep 2024</div>
     <div class="where">San Francisco, CA</div>
     <ul>
-      <li>Refined GTM strategy …</li>
-      <li>Analyzed 50+ VC blogs …</li>
-      <li>Built internal database …</li>
-      <li>Designed 10+ slide pitch deck …</li>
-    </ul>
-  </div>
-
-  <h2>PROJECTS</h2>
-  <p>Probability of Default Predictive Model (<time datetime="2024-01">Jan 2024</time> – <time datetime="2024-05">May 2024</time>)</p>
-  <ul>
-    <li>Developed PD Model using Logistic Regression …</li>
-    <li>Conducted Vintage Analysis …</li>
-    <li>Performed Roll Rate Analysis …</li>
-    <li>Reduced variables …</li>
-    <li>Tested discriminatory power …</li>
-  </ul>
-
-  <h2>SKILLS & ACHIEVEMENTS</h2>
-  <p>Languages: English (native), Chinese (native), French (intermediate)</p>
-  <p>Technical: Python, Java, SQL, Tableau, Snowflake, Microsoft Excel, PowerPoint</p>
-
-  <script type="module" src="../global.js"></script>
-</body>
-</html>
+      <li>Refined go-to-market strategy and authored a one-pager that lifted cold-email response rate by 10%+; contributed to acquiring 100+ customers and generating $6,000+ in revenue.</li>
+      <li>Analyzed 50+ venture blogs using the OpenAI GPT API and developed a reusable blog template that reached 5,000+ impressions with a 12% conversion rate.</li>
+      <li>Built an internal database of 500+ investors and created a risk-appetite scorecard that improved targeting accuracy by 50%+.</li>
+      <li>Designed a 10+ slide inves
