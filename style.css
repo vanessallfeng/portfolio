@@ -39,7 +39,7 @@ nav a:hover {
   border-bottom-color: var(--border-color);
 }
 
-input, textarea, button { font: inherit; }
+input, textarea, button, select { font: inherit; }
 
 form {
   display: grid;
@@ -60,9 +60,9 @@ button { grid-column: 1 / -1; }
   grid-template-rows: subgrid;
   grid-row: span 3;
 }
-.projects h2 { margin: 0; }
+.projects h2 {margin: 0; }
 
-h1 { font-size: 400%; }
+h1 {font-size: 400%; }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
@@ -76,3 +76,15 @@ body.resume li { margin: 0.35em 0; }
 body.resume .job { display: grid; grid-template-columns: 1fr auto; gap: .25rem; align-items: baseline; }
 body.resume .job .where,
 body.resume .job .dates { opacity: .8; }
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8rem;
+  opacity: .9;
+  z-index: 1000;
+}
