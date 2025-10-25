@@ -6,10 +6,11 @@ const pages = [
   { url: "https://github.com/vanessallfeng", title: "GitHub" }
 ];
 
-const isLocal= location.hostname === "localhost" || location.hostname === "127.0.0.1";
+const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 const isGhPages = location.hostname.endsWith(".github.io");
-const parts= location.pathname.split("/").filter(Boolean);
+const parts = location.pathname.split("/").filter(Boolean);
 const BASE_PATH = isLocal ? "/" : (isGhPages ? (parts.length ? `/${parts[0]}/` : "/") : "/");
+
 const nav = document.createElement("nav");
 document.body.prepend(nav);
 
@@ -23,6 +24,7 @@ for (const p of pages) {
   const u = new URL(url, location.href);
   a.href = u.href;
   a.classList.toggle("current", u.host === location.host && u.pathname === location.pathname);
+
   const isExternal = u.host !== location.host;
   a.toggleAttribute("target", isExternal);
   if (isExternal) a.rel = "noopener";
@@ -60,18 +62,71 @@ const initial =
   "light dark";
 setColorScheme(initial);
 
-if (select) {
-  select.addEventListener("input", (e) => setColorScheme(e.target.value));
-}
+select?.addEventListener("input", (e) => setColorScheme(e.target.value));
 
 const mailForm = document.querySelector('form[action^="mailto:"]');
 mailForm?.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(mailForm);
   const subject = (data.get("subject") ?? "").toString();
-  const body    = (data.get("body") ?? "").toString();
-  const params  = new URLSearchParams({ subject, body });
-  const url     = `${mailForm.action}?${params.toString()}`;
+  const body = (data.get("body") ?? "").toString();
+  const params = new URLSearchParams({ subject, body });
+  const url = `${mailForm.action}?${params.toString()}`;
   location.href = url;
 });
 
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+    return [];
+  }
+}
+
+export function renderProjects(projects, container, headingLevel = "h2") {
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const list = Array.isArray(projects) ? projects : [];
+  const tag = /^(h[1-6])$/.test(headingLevel) ? headingLevel : "h2";
+
+  if (list.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "muted";
+    empty.textContent = "No projects to display.";
+    container.appendChild(empty);
+    return;
+  }
+
+  for (const p of list) {
+    const article = document.createElement("article");
+    article.innerHTML = `
+      <${tag}>${p.title ?? ""}</${tag}>
+      ${p.image ? `<img src="${p.image}" alt="${p.title ?? ""}">` : ""}
+      <p>${p.description ?? ""}</p>
+    `;
+    container.appendChild(article);
+  }
+}
+
+export async function fetchGitHubData(username) {
+  const url = `https://api.github.com/users/${encodeURIComponent(username)}`;
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/vnd.github+json" }
+    });
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching GitHub data:", error);
+    return null;
+  }
+}

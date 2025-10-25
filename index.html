@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanessa Feng: Personal site and portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanessa Feng: Personal site and portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .github-stats { margin-top: 1rem; }
+    .gh-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .5rem 1rem;
+      align-items: end;
+    }
+    .gh-stats dt { 
+      font-weight: 600; 
+      opacity: .75; 
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-size: .85rem;
+    }
+    .gh-stats dd { margin: 0; font-size: 1.6rem; }
+  </style>
 </head>
 <body>
-    <h1>Vanessa Feng</h1>
-    <p>Hi, I'm Vanessa! I'm a junior at UC San Diego studying Economics and Data Science.</p>
-    <img src="images/randomphoto.jpeg" alt="A photo of my cat">
-<script type="module" src="global.js"></script>
+  <h1>Vanessa Feng</h1>
+  <p>Hi, I'm Vanessa! I'm a junior at UC San Diego studying Economics and Data Science.</p>
+
+  <img src="images/randomphoto.jpeg" alt="A photo of my cat" />
+
+  <h2>Latest Projects</h2>
+  <div class="projects"></div>
+
+  <h2>My GitHub Stats</h2>
+  <div class="github-stats"></div>
+
+  <script src="global.js" type="module" defer></script>
+  <script src="index.js" type="module" defer></script>
 </body>
 </html>
