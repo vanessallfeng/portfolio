@@ -60,7 +60,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
   let selectedYear = null;
   let searchQuery = '';
 
-  function applyFilters() {
+  function pipelinefilter() {
     let showing = allProjects.slice();
 
     if (selectedYear) {
@@ -87,19 +87,19 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
     const year = d.data.label;
     selectedYear = selectedYear === year ? null : year;
     updateHighlight();
-    applyFilters();
+    pipelinefilter();
   });
 
   legendItems.on('click', (event, d) => {
     const year = d.label;
     selectedYear = selectedYear === year ? null : year;
     updateHighlight();
-    applyFilters();
+    pipelinefilter();
   });
 
   const searchInput = document.querySelector('.searchBar');
   searchInput.addEventListener('input', (event) => {
     searchQuery = event.target.value || '';
-    applyFilters();
+    pipelinefilter();
   });
 })();

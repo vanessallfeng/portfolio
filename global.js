@@ -3,6 +3,7 @@ const pages = [
   { url: "projects/", title: "Projects" },
   { url: "contact/", title: "Contact" },
   { url: "resume/resume.html", title: "Resume" },
+  { url: "meta/", title: "Meta" },
   { url: "https://github.com/vanessallfeng", title: "GitHub" }
 ];
 
@@ -10,6 +11,20 @@ const isLocal = location.hostname === "localhost" || location.hostname === "127.
 const isGhPages = location.hostname.endsWith(".github.io");
 const parts = location.pathname.split("/").filter(Boolean);
 const BASE_PATH = isLocal ? "/" : (isGhPages ? (parts.length ? `/${parts[0]}/` : "/") : "/");
+
+function normalizePath(pathname) {
+  let p = pathname || "/";
+  try {
+    p = new URL(pathname, location.origin).pathname;
+  } catch {
+  }
+  p = p.replace(/\/index\.html$/i, "/");
+  p = p.replace(/\/{2,}/g, "/");
+  if (p !== "/" && !p.endsWith("/")) p += "/";
+  return p;
+}
+
+const currentPath = normalizePath(location.pathname);
 
 const nav = document.createElement("nav");
 document.body.prepend(nav);
@@ -23,7 +38,9 @@ for (const p of pages) {
 
   const u = new URL(url, location.href);
   a.href = u.href;
-  a.classList.toggle("current", u.host === location.host && u.pathname === location.pathname);
+
+  const normalizedTarget = normalizePath(u.pathname);
+  a.classList.toggle("current", u.host === location.host && normalizedTarget === currentPath);
 
   const isExternal = u.host !== location.host;
   a.toggleAttribute("target", isExternal);

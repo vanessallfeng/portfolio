@@ -19,7 +19,7 @@ import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
     const githubContainer = document.querySelector('.github-stats');
     if (githubContainer) {
-      const data = await fetchGitHubData('vanessallfeng'); // your username
+      const data = await fetchGitHubData('vanessallfeng');
       if (data) {
         githubContainer.innerHTML = `
           <dl class="gh-stats">
