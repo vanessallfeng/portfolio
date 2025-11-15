@@ -1,5 +1,18 @@
 [
   {
+    "title": "Bikewatching",
+    "year": 2025,
+    "image": "/images/bikewatching.png",
+    "url": "https://vanessallfeng.github.io/bikewatching/",
+    "description": "Bluebikes station traffic across Boston and Cambridge, interactive map."
+  },
+  {
+    "title": "Lorem ipsum dolor sit.",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia quisquam tenetur optio magni eveniet quaerat dolores perspiciatis necessitatibus odit commodi laborum qui fugit corrupti, esse doloremque, aspernatur culpa numquam tempore?"
+  },
+  {
     "title": "Lorem ipsum dolor sit.",
     "year": 2024,
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",

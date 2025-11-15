@@ -123,14 +123,40 @@ export function renderProjects(projects, container, headingLevel = "h2") {
 
   for (const p of list) {
     const article = document.createElement("article");
+
+    const titleText = p.title ?? "";
+    const descText = p.description ?? "";
+    const hasUrl = !!p.url;
+
+    // image HTML (image itself is clickable, title is NOT)
+    const imgHtml = p.image
+      ? (hasUrl
+          ? `<a href="${p.url}" target="_blank" rel="noopener">
+               <img src="${p.image}" alt="${titleText}">
+             </a>`
+          : `<img src="${p.image}" alt="${titleText}">`)
+      : "";
+
+    const linkHtml = hasUrl
+      ? `<p class="project-link-wrapper">
+           <a class="project-link" href="${p.url}" target="_blank" rel="noopener">
+             View project ↗
+           </a>
+         </p>`
+      : "";
+
     article.innerHTML = `
-      <${tag}>${p.title ?? ""}</${tag}>
-      ${p.image ? `<img src="${p.image}" alt="${p.title ?? ""}">` : ""}
-      <p>${p.description ?? ""}</p>
+      <${tag}>${titleText}</${tag}>
+      ${imgHtml}
+      <p class="project-description">${descText}</p>
+      ${linkHtml}
     `;
+
     container.appendChild(article);
   }
 }
+
+
 
 export async function fetchGitHubData(username) {
   const url = `https://api.github.com/users/${encodeURIComponent(username)}`;

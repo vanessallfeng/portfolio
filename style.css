@@ -310,3 +310,28 @@ dl.info {
   visibility: visible;
   transform: translateY(0);
 }
+/* Project cards layout */
+.projects article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.projects img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-description {
+  margin: 0;
+}
+
+.project-link-wrapper {
+  margin: 0;
+}
+
+.project-link {
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
