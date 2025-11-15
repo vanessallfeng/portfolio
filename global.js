@@ -123,38 +123,43 @@ export function renderProjects(projects, container, headingLevel = "h2") {
 
   for (const p of list) {
     const article = document.createElement("article");
-
+    const hasUrl = !!p.url;
     const titleText = p.title ?? "";
     const descText = p.description ?? "";
-    const hasUrl = !!p.url;
 
-    // image HTML (image itself is clickable, title is NOT)
-    const imgHtml = p.image
-      ? (hasUrl
-          ? `<a href="${p.url}" target="_blank" rel="noopener">
-               <img src="${p.image}" alt="${titleText}">
-             </a>`
-          : `<img src="${p.image}" alt="${titleText}">`)
+    // 🔹 NEW: make relative image paths work on *all* pages
+    let imageSrc = p.image ?? "";
+    const isExternalImg = /^https?:\/\//i.test(imageSrc);
+    if (imageSrc && !isExternalImg) {
+      // Strip any leading "./" or "/" and prefix with BASE_PATH
+      imageSrc = BASE_PATH + imageSrc.replace(/^\.?\//, "");
+    }
+
+    const imgHtml = imageSrc
+      ? `<img src="${imageSrc}" alt="${titleText}">`
       : "";
 
-    const linkHtml = hasUrl
-      ? `<p class="project-link-wrapper">
-           <a class="project-link" href="${p.url}" target="_blank" rel="noopener">
-             View project ↗
-           </a>
-         </p>`
+    const linkAttrs = hasUrl
+      ? `href="${p.url}" target="_blank" rel="noopener"`
       : "";
 
     article.innerHTML = `
       <${tag}>${titleText}</${tag}>
-      ${imgHtml}
-      <p class="project-description">${descText}</p>
-      ${linkHtml}
+
+      ${imageSrc && hasUrl
+        ? `<a ${linkAttrs}>${imgHtml}</a>`
+        : imgHtml}
+
+      <p>${descText}</p>
+      ${hasUrl
+        ? `<p><a class="project-link" ${linkAttrs}>View project ↗</a></p>`
+        : ""}
     `;
 
     container.appendChild(article);
   }
 }
+
 
 
 
