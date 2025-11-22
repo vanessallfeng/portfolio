@@ -507,7 +507,9 @@ dl.info {
 }
 
 /* space out commit steps so scrollama isn't jittery */
-#scatter-story .step {
+#scatter-story .step,
+#files-story .step,
+#files-story .file-step {
   margin-bottom: 5vh;
   font-size: 0.9rem;
 }
